@@ -24,8 +24,7 @@ public class MainActivity4 extends AppCompatActivity {
         Button btn = findViewById(R.id.vegan);
         Button btn1 = findViewById(R.id.vegetarian);
         Button btn2 = findViewById(R.id.keto);
-        Button btn3 = findViewById(R.id.skip);
-        Button btn5 = findViewById(R.id.button5);
+        Button btn3 = findViewById(R.id.butt);
 
 
         btn.setOnClickListener(new View.OnClickListener() {
@@ -50,12 +49,6 @@ public class MainActivity4 extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 gotoFourthPage();
-            }
-        });
-        btn5.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                //Nothing
             }
         });
     }

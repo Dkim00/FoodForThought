@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.Toast;
 
@@ -22,29 +23,31 @@ public class PriceOption extends AppCompatActivity {
         Button btn3 = findViewById(R.id.highPrice);
         Button btn4 = findViewById(R.id.button4);
 
-        btn1.setOnClickListener(new View.OnClickListener() {
+
+
+        btn1.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
                 returnVar = 1;
-                Toast.makeText(getApplicationContext(),String.format("%d",returnVar),Toast.LENGTH_SHORT).show();
+                //Toast.makeText(getApplicationContext(),String.format("%d",returnVar),Toast.LENGTH_SHORT).show();
             }
         });
-        btn2.setOnClickListener(new View.OnClickListener() {
+        btn2.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
                 returnVar = 2;
-                Toast.makeText(getApplicationContext(),String.format("%d",returnVar),Toast.LENGTH_SHORT).show();
+                //Toast.makeText(getApplicationContext(),String.format("%d",returnVar),Toast.LENGTH_SHORT).show();
             }
         });
-        btn3.setOnClickListener(new View.OnClickListener() {
+        btn3.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
                 returnVar = 3;
-                Toast.makeText(getApplicationContext(),String.format("%d",returnVar),Toast.LENGTH_SHORT).show();
+               Toast.makeText(getApplicationContext(),String.format("%d",returnVar),Toast.LENGTH_SHORT).show();
 
             }
         });
-        btn4.setOnClickListener(new View.OnClickListener() {
+        btn4.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
                 goToNextPage();
