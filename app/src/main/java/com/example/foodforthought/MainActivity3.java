@@ -105,10 +105,8 @@ public class MainActivity3 extends AppCompatActivity {
                     for (String mod:MainActivity3.getModifierType()) {
                         finalList.add(mod);
                     }
-                    Log.i("myApp", "This button is working!");
                     spinner.setVisibility(View.VISIBLE);
                     if (ContextCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
-                        System.out.println("Permission already granted");
                         fusedLocationClient.getLastLocation()
                                 .addOnSuccessListener(MainActivity3.this, listener);
                     } else {

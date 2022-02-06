@@ -51,25 +51,27 @@ public class PlaceFinder extends Service {
                 responses.add(jArray);
 
                 for(int j = 0; j < jArray.length(); j++) {
-                    try {
-                        if(jArray.getJSONObject(i).getInt("price_level") == price) {
-                            if(scores.get(jArray.getJSONObject(j).getString("place_id")) == null) {
-                                scores.put(jArray.getJSONObject(j).getString("place_id"), 1);
-                            } else {
-                                scores.put(jArray.getJSONObject(j).getString("place_id"), scores.get(jArray.getJSONObject(j).getString("place_id"))+1);
+                    if(jArray.getJSONObject(i).getJSONObject("opening_hours").getBoolean("open_now")) {
+                        try {
+                            if (jArray.getJSONObject(i).getInt("price_level") == price) {
+                                if (scores.get(jArray.getJSONObject(j).getString("place_id")) == null) {
+                                    scores.put(jArray.getJSONObject(j).getString("place_id"), 1);
+                                } else {
+                                    scores.put(jArray.getJSONObject(j).getString("place_id"), scores.get(jArray.getJSONObject(j).getString("place_id")) + 1);
+                                }
                             }
+                        } catch (JSONException e) {
+
                         }
-                    } catch (JSONException e) {
 
-                    }
-
-                    if(scores.get(jArray.getJSONObject(j).getString("place_id")) == null) {
-                        scores.put(jArray.getJSONObject(j).getString("place_id"), 1);
-                    } else {
-                        scores.put(jArray.getJSONObject(j).getString("place_id"), scores.get(jArray.getJSONObject(j).getString("place_id"))+1);
-                    }
-                    if(items.get(jArray.getJSONObject(j).getString("place_id")) == null) {
-                        items.put(jArray.getJSONObject(j).getString("place_id"), jArray.getJSONObject(j));
+                        if (scores.get(jArray.getJSONObject(j).getString("place_id")) == null) {
+                            scores.put(jArray.getJSONObject(j).getString("place_id"), 1);
+                        } else {
+                            scores.put(jArray.getJSONObject(j).getString("place_id"), scores.get(jArray.getJSONObject(j).getString("place_id")) + 1);
+                        }
+                        if (items.get(jArray.getJSONObject(j).getString("place_id")) == null) {
+                            items.put(jArray.getJSONObject(j).getString("place_id"), jArray.getJSONObject(j));
+                        }
                     }
 
                 }
@@ -85,8 +87,8 @@ public class PlaceFinder extends Service {
         JSONObject[] list = new JSONObject[10];
         int cur = 0;
         ArrayList<String> keys = new ArrayList<String>();
+        int max = Collections.max(scores.values());
         while(keys.size() < 10 && keys.size() < items.size()) {
-            int max = Collections.max(scores.values());
             for(Map.Entry<String,Integer> entry: scores.entrySet()) {
                 if(entry.getValue() == max && keys.size() < 10 && keys.size() < items.size()){
                     keys.add(entry.getKey());
@@ -94,6 +96,7 @@ public class PlaceFinder extends Service {
                     cur++;
                 }
             }
+            max--;
         }
 
         return list;
