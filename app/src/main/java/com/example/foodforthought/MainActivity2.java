@@ -61,5 +61,5 @@ public class MainActivity2 extends AppCompatActivity {
         }
         if (driveThrough) {
             returnList.add("drive through");}
-        return varList;
+        return returnList;
         }}

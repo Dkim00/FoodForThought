@@ -14,6 +14,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.google.android.gms.location.FusedLocationProviderClient;
@@ -35,6 +36,7 @@ public class MainActivity3 extends AppCompatActivity {
     public JSONObject[] list;
     List<String> finalList = new ArrayList<>();
     JSONObject finalChoice;
+    private ProgressBar spinner;
 
     //    boolean spice = false;
 //    boolean deepfry= false;
@@ -46,13 +48,14 @@ public class MainActivity3 extends AppCompatActivity {
         public void onSuccess(Location location) {
             // Got last known location. In some rare situations this can be null.
             if (location != null) {
-                PlaceFinder finder = new PlaceFinder(finalList.toArray(new String[0]), 2, location);
+                PlaceFinder finder = new PlaceFinder(finalList.toArray(new String[0]), PriceOption.getPrice(), location);
                 list = finder.getTop10();
                 int ran = (int) (Math.random()*10);
                 finalChoice = list[ran];
                 goToLastPage();
             }else {
                 Toast.makeText(getApplicationContext(),"Could not get your location, please try again later!",Toast.LENGTH_SHORT).show();
+                spinner.setVisibility(View.GONE);
             }
         }
     };
@@ -66,16 +69,8 @@ public class MainActivity3 extends AppCompatActivity {
         Button deepFried = findViewById(R.id.deepFried);
         Button option3 = findViewById(R.id.option3);
         Button results = findViewById(R.id.showResults);
-
-        for (String diet:MainActivity4.getDietType()) {
-            finalList.add(diet);
-        }
-        for (String eat:MainActivity2.getEatType()) {
-            finalList.add(eat);
-        }
-        for (String mod:MainActivity3.getModifierType()) {
-            finalList.add(mod);
-        }
+        spinner = (ProgressBar)findViewById(R.id.progressBar1);
+        spinner.setVisibility(View.GONE);
 
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
 
@@ -101,8 +96,17 @@ public class MainActivity3 extends AppCompatActivity {
         results.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                    for (String diet:MainActivity4.getDietType()) {
+                        finalList.add(diet);
+                    }
+                    for (String eat:MainActivity2.getEatType()) {
+                        finalList.add(eat);
+                    }
+                    for (String mod:MainActivity3.getModifierType()) {
+                        finalList.add(mod);
+                    }
                     Log.i("myApp", "This button is working!");
+                    spinner.setVisibility(View.VISIBLE);
                     if (ContextCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
                         System.out.println("Permission already granted");
                         fusedLocationClient.getLastLocation()
@@ -123,6 +127,7 @@ public class MainActivity3 extends AppCompatActivity {
         } catch (JSONException e) {
             Toast.makeText(getApplicationContext(), "There was an error, please try again!", Toast.LENGTH_SHORT).show();
         }
+        spinner.setVisibility(View.GONE);
     }
     //getter
     public static List<String> getModifierType(){
@@ -153,6 +158,7 @@ public class MainActivity3 extends AppCompatActivity {
             }
             else {
                 Toast.makeText(MainActivity3.this, "Location Permission Denied", Toast.LENGTH_SHORT).show();
+                spinner.setVisibility(View.GONE);
             }
         }
     }
