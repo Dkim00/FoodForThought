@@ -11,10 +11,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity4 extends AppCompatActivity {
-    boolean vegan = false;
-    boolean vegetarian = false;
-    boolean keto = false;
-    List varList1 = new ArrayList();
+    static boolean vegan = false;
+    static boolean vegetarian = false;
+    static boolean keto = false;
+    public static List<String> varList1 = new ArrayList<String>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,7 +65,7 @@ public class MainActivity4 extends AppCompatActivity {
 
     }
     //getter
-    public List getDietType(){
+    public static List<String> getDietType(){
         if (vegan){
             varList1.add("vegan");
                     }
@@ -73,7 +73,7 @@ public class MainActivity4 extends AppCompatActivity {
             varList1.add("vegetarian");
         }
         if (keto){
-            varList1.add("keto")
+            varList1.add("keto");
         }
         return varList1;
     }

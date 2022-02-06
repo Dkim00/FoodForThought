@@ -13,7 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity2 extends AppCompatActivity {
-    List varList = new ArrayList();
+    List varList<String> = new ArrayList(<String>);
     boolean dineIn = false;
     boolean driveThrough = false;
     @Override

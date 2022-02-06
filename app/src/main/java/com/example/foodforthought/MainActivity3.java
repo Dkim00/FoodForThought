@@ -60,7 +60,7 @@ public class MainActivity3 extends AppCompatActivity {
             varList2.add("deep fried");
         }
         if (option){
-            varList2.add("option3")
+            varList2.add("option3");
         }
         return varList2;
-}
+}}
