@@ -26,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
 
                 goToFirstPage();
-                Toast.makeText(getApplicationContext(),"This button should move me to the next page!",Toast.LENGTH_SHORT).show();
+                //Toast.makeText(getApplicationContext(),"This button should move me to the next page!",Toast.LENGTH_SHORT).show();
 
 
             }

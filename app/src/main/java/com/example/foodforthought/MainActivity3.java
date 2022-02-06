@@ -65,7 +65,7 @@ public class MainActivity3 extends AppCompatActivity {
         startActivity(intent);
     }
     //getter
-    public static List<String> getDietType(){
+    public static List<String> getModifierType(){
         if (spice){
             varList2.add("spicy");
         }

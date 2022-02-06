@@ -16,14 +16,18 @@ public class LastPage extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_last_page);
 
-
-    for (String value:MainActivity4.getDietType()) {
+    //generate final list
+    for (String diet:MainActivity4.getDietType()) {
+        finalList.add(diet);
     }
-    for (String value:MainActivity2.getEatType()) {
+    for (String eat:MainActivity2.getEatType()) {
+        finalList.add(eat);
         }
-    for (String value:MainActivity3.getDietType()) {
+    for (String mod:MainActivity3.getModifierType()) {
+        finalList.add(mod);
         }
 
     }
+
 
 }

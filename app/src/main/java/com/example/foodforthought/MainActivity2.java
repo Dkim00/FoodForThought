@@ -14,8 +14,8 @@ import java.util.List;
 
 public class MainActivity2 extends AppCompatActivity {
     static List varList = new ArrayList();
-    boolean dineIn = false;
-    boolean driveThrough = false;
+    static boolean dineIn = false;
+    static boolean driveThrough = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,42 +32,34 @@ public class MainActivity2 extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 dineIn = true;
-                Toast.makeText(getApplicationContext(),"This button Works!",Toast.LENGTH_SHORT).show();
+                //Toast.makeText(getApplicationContext(),"This button Works!",Toast.LENGTH_SHORT).show();
             }
         });
         btn3.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
                 driveThrough = true;
-                Toast.makeText(getApplicationContext(),"This button Works!",Toast.LENGTH_SHORT).show();
+                //Toast.makeText(getApplicationContext(),"This button Works!",Toast.LENGTH_SHORT).show();
             }
         });
         btn4.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
                 goToThirdPage();
-                Toast.makeText(getApplicationContext(),"This button Works!",Toast.LENGTH_SHORT).show();
+                //Toast.makeText(getApplicationContext(),"This button Works!",Toast.LENGTH_SHORT).show();
             }
         });}
     public void goToThirdPage() {
         Intent intent = new Intent(this, MainActivity4.class);
-        startActivity(intent);
-    }
-    public void makeAList(){
+        startActivity(intent);}
+
+    //getter
+    public static List<String> getEatType(){
         List returnList = new ArrayList();
         if (dineIn){
             returnList.add("dine-in");
         }
-        if (driveThrough){
-            returnList.add("drive through");
-
-        }
-    }
-    //getter
-    public static List<String> getEatType(){
+        if (driveThrough) {
+            returnList.add("drive through");}
         return varList;
-    }
-
-
-
-}
+        }}
