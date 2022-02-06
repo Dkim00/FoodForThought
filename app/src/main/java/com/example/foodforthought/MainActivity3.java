@@ -2,6 +2,7 @@ package com.example.foodforthought;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -10,10 +11,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity3 extends AppCompatActivity {
-    boolean spice = false;
-    boolean deepfry= false;
-    boolean option= false;
-    List varList2 = new ArrayList();
+    private static boolean spice = false;
+    private static boolean deepfry = false;
+    private static boolean option = false;
+    private static List<String> varList2 = new ArrayList();
+
+    //    boolean spice = false;
+//    boolean deepfry= false;
+//    boolean option= false;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,13 +52,20 @@ public class MainActivity3 extends AppCompatActivity {
         results.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                goToLastPage();
 
 
             }
         });
+
+
+    }
+    public void goToLastPage(){
+        Intent intent = new Intent(this, LastPage.class);
+        startActivity(intent);
     }
     //getter
-    public List getDietType(){
+    public static List<String> getDietType(){
         if (spice){
             varList2.add("spicy");
         }

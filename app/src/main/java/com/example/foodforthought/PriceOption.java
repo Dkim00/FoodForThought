@@ -9,8 +9,9 @@ import android.widget.Button;
 import android.widget.Toast;
 
 public class PriceOption extends AppCompatActivity {
+    private static int price = 0;
     int returnVar = 0;
-    int price = 0;
+    //int price = 0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -19,6 +20,7 @@ public class PriceOption extends AppCompatActivity {
         Button btn1 = findViewById(R.id.lowPrice);
         Button btn2 = findViewById(R.id.mediumPrice);
         Button btn3 = findViewById(R.id.highPrice);
+        Button btn4 = findViewById(R.id.button4);
 
         btn1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -42,6 +44,13 @@ public class PriceOption extends AppCompatActivity {
 
             }
         });
+        btn4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                goToNextPage();
+
+            }
+        });
 
 
 
@@ -53,7 +62,7 @@ public class PriceOption extends AppCompatActivity {
     }
 
     //getter
-    public int getPrice(){
+    public static int getPrice(){
         return price;
     }
 }

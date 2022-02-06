@@ -9,6 +9,7 @@ import java.util.List;
 
 public class LastPage extends AppCompatActivity {
     List finalList = new ArrayList();
+    int finalPrice = PriceOption.getPrice();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -18,9 +19,9 @@ public class LastPage extends AppCompatActivity {
 
     for (String value:MainActivity4.getDietType()) {
     }
-    for (String value:MainActivity4.getDietType()) {
+    for (String value:MainActivity2.getEatType()) {
         }
-    for (String value:MainActivity4.getDietType()) {
+    for (String value:MainActivity3.getDietType()) {
         }
 
     }

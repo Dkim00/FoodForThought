@@ -13,9 +13,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity2 extends AppCompatActivity {
-    List varList<String> = new ArrayList(<String>);
+    static List varList = new ArrayList();
     boolean dineIn = false;
     boolean driveThrough = false;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -63,7 +64,7 @@ public class MainActivity2 extends AppCompatActivity {
         }
     }
     //getter
-    public List getEatType(){
+    public static List<String> getEatType(){
         return varList;
     }
 
